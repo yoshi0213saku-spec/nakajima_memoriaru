@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中島家メモリアルサイト 〜 絆をつなぐ 音楽と動画の広場 〜</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #fcfbf9;
+            --accent-gold: #d97706;
+            --accent-indigo: #4f46e5;
+            --text-main: #1f2937;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(251, 191, 36, 0.05) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+        }
+
+        .title-serif {
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.93);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .category-card {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px -6px rgba(217, 119, 6, 0.15);
+        }
+
+        .category-card:hover .cat-icon {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .cat-icon {
+            transition: transform 0.4s ease;
+        }
+
+        .track-active {
+            border-left: 4px solid var(--accent-gold);
+            background: #fffbe2 !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .insight-text-anim {
+            animation: textFadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes textFadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            object-fit: contain;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+
+    <div class="max-w-3xl mx-auto px-4 py-8 md:py-12">
+
+        <!-- ヘッダー -->
+        <header class="text-center mb-10 fade-in" style="animation-delay: 0.05s;">
+            <div class="inline-flex items-center space-x-2 bg-amber-50 px-4 py-1.5 rounded-full mb-5 border border-amber-200/60 shadow-sm">
+                <span class="relative flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+                </span>
+                <span class="text-[11px] font-black text-amber-800 tracking-[0.18em] uppercase">Nakajima Family Memorial Archive</span>
+            </div>
+            
+            <div class="space-y-3">
+                <h1 class="text-3xl md:text-5xl text-gray-900 title-serif font-black tracking-tight drop-shadow-sm">
+                    中島家メモリアルサイト
+                </h1>
+                <p class="text-sm md:text-base text-amber-900 font-bold tracking-wider pt-1">
+                    〜 絆をつなぐ 音楽と動画の広場 〜
+                </p>
+                <p class="text-xs md:text-sm text-gray-500 font-medium">ご家族・ご親族の思い出をいつでも一緒に楽しめるデジタルアーカイブ</p>
+            </div>
+        </header>
+
+        <div class="space-y-8 fade-in" style="animation-delay: 0.1s;">
+            
+            <!-- アーカイブ概要セクション -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 border border-amber-100/60 bg-gradient-to-br from-white via-amber-50/10 to-white shadow-lg">
+                <section>
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-xs font-bold text-amber-600 uppercase tracking-[0.3em]">Family Greeting</h2>
+                        <span class="text-[10px] text-amber-800/60 font-semibold bg-amber-100/60 px-2.5 py-0.5 rounded-full">中島家ポータル</span>
+                    </div>
+                    
+                    <!-- 概要 タイトル -->
+                    <h3 class="text-base md:text-xl font-bold text-amber-950 leading-snug mb-4 title-serif border-l-4 border-amber-500 pl-3">
+                        いつでも、どこからでも。家族の思い出と心あたたまる音楽が集う場所へ。
+                    </h3>
+
+                    <!-- 概要 本文 -->
+                    <div class="text-xs md:text-sm text-gray-700 leading-relaxed space-y-3.5">
+                        <p>「中島家メモリアルサイト」へようこそ。</p>
+                        <p>このサイトは、兄弟・両親・親族の皆さまがいつでも集い、共に歩んできた大切な思い出の映像や、心に残る懐かしい音楽を一緒に愉しむためのデジタル広場です。</p>
+                        <p>旅行や親族のお祝いごとのYouTube動画、家族みんなが大好きな音楽、子どもたちや孫たちの成長記録などをひとつにまとめました。遠く離れて暮らす家族同士でも、この広場を開けばいつでも笑顔でつながることができます。</p>
+                        <p class="font-bold text-amber-900 pt-1">あたたかな思い出の映像と音楽を聴きながら、ゆったりとしたひとときをお過ごしください。</p>
+                    </div>
+                </section>
+
+                <hr class="border-amber-100">
+
+                <section>
+                    <div class="flex items-center justify-between mb-5">
+                        <h2 class="text-xs font-bold text-amber-700 uppercase tracking-[0.3em]">Categories</h2>
+                        <span class="text-[10px] text-gray-400 font-medium">タップでカテゴリーへ移動</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <!-- 1. 家族の思い出ムービー -->
+                        <a href="#cat-movies" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/40 rounded-2xl border border-amber-200/70 hover:border-amber-400 transition-all block group shadow-sm">
+                            <div class="flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-amber-700">
+                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                                            家族の思い出ムービー
+                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">YouTube</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">家族旅行や親族の集まり、お祝い事など、大切なイベントの映像記録アーカイブ。</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 2. 我が家の名曲アルバム -->
+                        <a href="#cat-music" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-indigo-50/30 rounded-2xl border border-indigo-100 hover:border-indigo-300 transition-all block group shadow-sm">
+                            <div class="flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-indigo-700">
+                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-indigo-700 transition-colors flex items-center gap-1.5">
+                                            我が家の名曲アルバム
+                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">音楽 / 歌</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">ご両親や兄弟みんなで口ずさんだ思い出の曲、心癒やされる家族のお気に入りソング。</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 3. 世代のあゆみ・成長記録 -->
+                        <a href="#cat-growth" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-rose-50/30 rounded-2xl border border-rose-100 hover:border-rose-300 transition-all block group shadow-sm">
+                            <div class="flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-rose-700">
+                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-rose-700 transition-colors flex items-center gap-1.5">
+                                            世代のあゆみ・成長記録
+                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-100">子ども・孫</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">子供たちや孫たちの発表会、七五三、結婚式など、成長と祝福のあゆみ。</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 4. 季節の便りと風景 -->
+                        <a href="#cat-seasons" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-emerald-50/30 rounded-2xl border border-emerald-100 hover:border-emerald-300 transition-all block group shadow-sm">
+                            <div class="flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-emerald-700">
+                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.055M11 20.935V19a2 2 0 00-2-2h-1a2 2 0 01-2-2v-1a2 2 0 00-2-2H3.055M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-emerald-700 transition-colors flex items-center gap-1.5">
+                                            季節の便りと風景
+                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">故郷・旅路</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">実家の風景、四季折々の美しいお便り映像、みんなで出かけた景勝地。</p>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </section>
+            </div>
+
+            <!-- メモリアルプレイヤーセクション（YouTube & オーディオ対応） -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 border border-amber-100 shadow-xl">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="text-xs font-bold text-amber-700 uppercase tracking-widest flex items-center gap-1.5">
+                        <span class="inline-block w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+                        Nakajima Family Player
+                    </span>
+                    <span id="playing-indicator" class="text-[10px] text-gray-400 font-medium">リストから動画・音楽を選択してください</span>
+                </div>
+
+                <!-- メディア再生表示エリア（YouTubeまたはAudio） -->
+                <div id="media-panel" class="hidden mb-6 glass-card rounded-3xl p-5 md:p-7 bg-gradient-to-br from-amber-950 via-gray-900 to-amber-900 text-white shadow-2xl border border-amber-500/30 transition-all duration-300 scroll-mt-20">
+                    
+                    <!-- 上部ヘッダー（カテゴリー情報 & タグ） -->
+                    <div class="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-amber-500/30">
+                        <div class="flex items-center space-x-2.5 shrink-0 min-w-0">
+                            <div id="media-cat-icon" class="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/30 flex items-center justify-center shrink-0 p-1.5 text-amber-300">
+                                <!-- JSで動的セット -->
+                            </div>
+                            <div class="flex items-center gap-2 shrink-0">
+                                <span id="media-cat-name" class="text-sm md:text-base font-black text-amber-100 tracking-wide">カテゴリー</span>
+                                <span id="media-type-badge" class="text-[10px] md:text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/30 text-amber-200 border border-amber-400/40">形式</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- メモリアルタイトル -->
+                    <div class="mb-4">
+                        <h3 id="media-title" class="text-base md:text-xl font-black text-amber-300 block leading-snug title-serif">作品名・タイトル</h3>
+                    </div>
+
+                    <!-- メディア画面領域 (YouTube iframe または Audio Player) -->
+                    <div id="media-display-area" class="mb-5 rounded-2xl overflow-hidden bg-black/60 border border-amber-500/20">
+                        <!-- YouTube embed or Audio player gets inserted here dynamically -->
+                    </div>
+
+                    <!-- エピソード・思い出メッセージ（自動切り替え表示） -->
+                    <div class="min-h-[76px] flex items-center py-3 px-4 bg-black/40 rounded-2xl border border-amber-400/20 backdrop-blur-md">
+                        <div class="w-full">
+                            <p class="text-[10px] text-amber-400/80 font-bold tracking-wider uppercase mb-1">Family Episode / 思い出のメモ</p>
+                            <p id="media-episode-text" class="text-xs md:text-sm leading-relaxed font-medium text-amber-50 insight-text-anim"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- プレイリスト一覧 -->
+                <div class="space-y-6" id="playlist">
+
+                    <!-- カテゴリー1: 家族の思い出ムービー -->
+                    <div id="cat-movies" class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-3 scroll-mt-6">
+                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-amber-200/80">
+                            <div class="w-7 h-7 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm text-amber-800">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xs font-black text-amber-950 tracking-wider">家族の思い出ムービー</h3>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">動画（YouTube / MP4）</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2.5">
+                            <!-- MP4動画 1: 正則・ミネ子自伝 -->
+                            <div onclick="playVideo('./masanori_mineko.mp4', '正則・ミネ子自伝', [
+                                '正則さんとミネ子さんの歩んでこられた大切な人生の記録・自伝映像です。',
+                                'ご家族や親族の歴史、思い出、次世代へのメッセージが詰まった大切な宝物。',
+                                'いつでもご家族みなさまで繰り返し鑑賞し、あたたかな絆を感じることができます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-amber-200/90 hover:border-amber-400 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">正則・ミネ子自伝</h4>
+                                        <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 MP4動画 • 家族自伝・人生の記録</p>
+                                    </div>
+                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                </div>
+                            </div>
+
+                            <!-- YouTube動画 1 -->
+                            <div onclick="playYouTube('dQw4w9WgXcQ', '【家族旅行】温泉めぐり＆古希のお祝い', [
+                                'ご両親の古希のお祝いを兼ねて家族みんなで出かけた温泉旅行の思い出映像です。',
+                                '夜の宴会で大爆笑したカラオケ大会のシーンは、何度見ても家族の笑顔になれます！',
+                                'お孫さんたちが描いた似顔絵をプレゼントした時の、おじいちゃん・おばあちゃんの嬉しそうな顔が最高でした。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-amber-100 hover:border-amber-400 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">【家族旅行】温泉めぐり＆古希のお祝い</h4>
+                                        <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 家族旅行・お祝い</p>
+                                    </div>
+                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                </div>
+                            </div>
+
+                            <!-- YouTube動画 2 -->
+                            <div onclick="playYouTube('L_LUpnjgPso', '【親族大集合】お正月の親睦会＆思い出トーク', [
+                                'お正月に兄弟・従兄弟たちが本家に集まった時の賑やかなビデオ記録です。',
+                                '昔のアルバムを開きながら、「昔はお兄ちゃんがやんちゃだった」と思い出話に花が咲きました。',
+                                'みんなで並んで撮影した集合写真は、中島家の宝物です。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-amber-100 hover:border-amber-400 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">【親族大集合】お正月の親睦会＆思い出トーク</h4>
+                                        <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 正月親族会</p>
+                                    </div>
+                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カテゴリー2: 我が家の名曲アルバム -->
+                    <div id="cat-music" class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-3 scroll-mt-6">
+                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-indigo-200/60">
+                            <div class="w-7 h-7 rounded-lg bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm text-indigo-700">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xs font-black text-indigo-950 tracking-wider">我が家の名曲アルバム</h3>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">オーディオ曲</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <!-- オーディオ曲 1 -->
+                            <div onclick="playAudio('./music-komorojyoukoiuta.mp3', '小諸城恋歌（信州思い出の曲）', [
+                                'ご両親が大好きで、Driveのとき車内でよくかかっていた信州の情緒あふれる名曲です。',
+                                '信州の美しい山並みや古城の風景が目に浮かび、家族で出かけたドライブの風景が蘇ります。',
+                                'ゆったりとした和の旋律が、日々の疲れを優しく癒やしてくれます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">小諸城恋歌（信州思い出の曲）</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族のお気に入り曲</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 2 -->
+                            <div onclick="playAudio('./music-Melody of Dawn.mp3', '夜明けのメロディー (Melody of Dawn)', [
+                                '澄み渡る朝の光を思わせるアコースティックサウンド。ご家族でリラックスしたい時にぴったりの1曲。',
+                                '穏やかなピアノと優しい弦の響きが、心に温かな安らぎを与えてくれます。',
+                                '読書やティータイムのバックグラウンドミュージックとしてもおすすめです。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">夜明けのメロディー (Melody of Dawn)</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • ヒーリングBGM</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カテゴリー3: 世代のあゆみ・成長記録 -->
+                    <div id="cat-growth" class="p-4 rounded-2xl bg-rose-50/50 border border-rose-100 space-y-3 scroll-mt-6">
+                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-rose-200/60">
+                            <div class="w-7 h-7 rounded-lg bg-rose-100 border border-rose-200 flex items-center justify-center shrink-0 shadow-sm text-rose-700">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xs font-black text-rose-950 tracking-wider">世代のあゆみ・成長記録</h3>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 border border-rose-200">YouTube動画</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <!-- YouTube動画 3 -->
+                            <div onclick="playYouTube('fJ9rUzIMcZQ', '【成長記録】お孫さんのピアノ発表会＆運動会', [
+                                '子どもたち・お孫さんたちのピアノ発表会や運動会の一生懸命な姿を集めたムービーです。',
+                                '一生懸命にピアノを弾く小さな手と、終わった後のほっとした笑顔に胸が打たれます。',
+                                'すくすくと育つ命の輝きは、親族みんなの大きな活力と喜びです。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-rose-100 hover:border-rose-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-rose-700">【成長記録】お孫さんのピアノ発表会＆運動会</h4>
+                                        <p class="text-[10px] text-rose-500 font-medium mt-0.5">🎬 YouTube動画 • 成長イベント</p>
+                                    </div>
+                                    <span class="text-xs text-rose-600 font-bold bg-rose-50 px-2.5 py-1 rounded-lg border border-rose-200">再生 ▷</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カテゴリー4: 季節の便りと風景 -->
+                    <div id="cat-seasons" class="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-100 space-y-3 scroll-mt-6">
+                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-emerald-200/60">
+                            <div class="w-7 h-7 rounded-lg bg-emerald-100 border border-emerald-200 flex items-center justify-center shrink-0 shadow-sm text-emerald-700">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.055M11 20.935V19a2 2 0 00-2-2h-1a2 2 0 01-2-2v-1a2 2 0 00-2-2H3.055M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xs font-black text-emerald-950 tracking-wider">季節の便りと風景</h3>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-200">YouTube動画</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <!-- YouTube動画 4 -->
+                            <div onclick="playYouTube('2Vv-BfVoq4g', '【四季の便り】ふるさとの春・満開の桜並木', [
+                                '実家の近くにある美しい桜並木と川のせせらぎを映した、安らぎのショート映像です。',
+                                '幼い頃にみんなで遊んだ堤防の桜。変わらないふるさとの美しさが温かく心を包みます。',
+                                '季節ごとに移り変わる故郷の表情を、いつでもここから楽しむことができます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-emerald-100 hover:border-emerald-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-emerald-700">【四季の便り】ふるさとの春・満開の桜並木</h4>
+                                        <p class="text-[10px] text-emerald-600 font-medium mt-0.5">🎬 YouTube動画 • 風景・四季</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200">再生 ▷</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- サイト編集・管理プロファイル -->
+            <div class="glass-card rounded-3xl p-8 text-center mt-12 border border-amber-100 shadow-md">
+                <p class="text-[10px] text-amber-700 uppercase tracking-[0.4em] mb-4 font-black">Archive Administrator</p>
+                <div class="relative w-24 h-24 mx-auto mb-5 flex items-center justify-center overflow-hidden rounded-full bg-amber-50 border-2 border-amber-300 shadow-inner">
+                    <img id="curator-image" src="./aikon-sita1.png" alt="中島 義健" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentNode.innerHTML='<svg class=\'w-12 h-12 text-amber-300\' fill=\'currentColor\' viewBox=\'0 0 24 24\'><path d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/></svg>'">
+                </div>
+                <h4 class="text-xl font-bold text-gray-900 mb-1 title-serif">中島 義健</h4>
+                <p class="text-xs text-amber-800 font-bold mb-3">中島家メモリアルサイト 管理・編集担当</p>
+                <p class="text-xs text-gray-500 max-w-md mx-auto leading-relaxed mb-4">
+                    「新しい家族の動画やお気に入りの音楽を追加したい場合は、いつでもお気軽に連絡してくださいね。」
+                </p>
+                <a href="mailto:yoshi0213@gmail.com" class="text-xs text-gray-600 font-mono bg-amber-50/80 py-2 px-5 rounded-xl inline-block hover:text-amber-800 hover:bg-amber-100 transition-all duration-300 border border-amber-200/80 font-bold">
+                    ✉ yoshi0213@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <footer class="mt-16 text-center text-gray-400 text-[10px] tracking-[0.4em] uppercase font-bold">
+            &copy; Nakajima Family Memorial Archive. All Rights Reserved.
+        </footer>
+    </div>
+
+    <script>
+        let currentEpisodes = [];
+        let episodeIndex = 0;
+        let episodeInterval = null;
+
+        /**
+         * MP4動画再生モードの起動
+         */
+        function playVideo(videoUrl, title, episodes, element) {
+            setupMediaPanel(element, title, episodes, 'MP4動画');
+
+            const displayArea = document.getElementById('media-display-area');
+            if (displayArea) {
+                displayArea.innerHTML = `
+                    <div class="video-container bg-black">
+                        <video controls autoplay class="w-full h-full rounded-xl">
+                            <source src="${videoUrl}" type="video/mp4">
+                            お使いのブラウザは動画再生に対応していません。
+                        </video>
+                    </div>
+                `;
+            }
+
+            const indicator = document.getElementById('playing-indicator');
+            if (indicator) indicator.innerText = "🎬 動画再生中: " + title;
+
+            startEpisodeRotation();
+            scrollToPlayer();
+        }
+
+        /**
+         * YouTube動画再生モードの起動
+         */
+        function playYouTube(youtubeId, title, episodes, element) {
+            setupMediaPanel(element, title, episodes, 'YouTube動画');
+
+            const displayArea = document.getElementById('media-display-area');
+            if (displayArea) {
+                displayArea.innerHTML = `
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0" 
+                            title="${title}" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                `;
+            }
+
+            const indicator = document.getElementById('playing-indicator');
+            if (indicator) indicator.innerText = "🎬 動画再生中: " + title;
+
+            startEpisodeRotation();
+            scrollToPlayer();
+        }
+
+        /**
+         * オーディオ（音楽）再生モードの起動
+         */
+        function playAudio(audioUrl, title, episodes, element) {
+            setupMediaPanel(element, title, episodes, '音楽再生');
+
+            const displayArea = document.getElementById('media-display-area');
+            if (displayArea) {
+                displayArea.innerHTML = `
+                    <div class="p-6 text-center bg-gradient-to-r from-amber-950/60 to-gray-900/80">
+                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-300 border border-amber-400/30 animate-pulse">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
+                        </div>
+                        <audio id="main-audio-player" controls autoplay class="w-full h-10 focus:outline-none rounded-lg">
+                            <source src="${audioUrl}" type="audio/mpeg">
+                            お使いのブラウザはオーディオ再生に対応していません。
+                        </audio>
+                    </div>
+                `;
+            }
+
+            const indicator = document.getElementById('playing-indicator');
+            if (indicator) indicator.innerText = "🎵 音楽再生中: " + title;
+
+            startEpisodeRotation();
+            scrollToPlayer();
+        }
+
+        /**
+         * メディアパネルの共通UI更新処理
+         */
+        function setupMediaPanel(element, title, episodes, typeName) {
+            const mediaPanel = document.getElementById('media-panel');
+            const mediaTitle = document.getElementById('media-title');
+            const mediaTypeBadge = document.getElementById('media-type-badge');
+            
+            if (mediaPanel) mediaPanel.classList.remove('hidden');
+            if (mediaTitle) mediaTitle.innerText = title;
+            if (mediaTypeBadge) mediaTypeBadge.innerText = typeName;
+
+            // 親カテゴリー情報の取得とプレイヤーへの自動反映
+            if (element) {
+                const catCard = element.closest('[id^="cat-"]');
+                if (catCard) {
+                    const catNameEl = catCard.querySelector('h3');
+                    const catIconEl = catCard.querySelector('svg');
+
+                    const targetCatName = document.getElementById('media-cat-name');
+                    const targetCatIcon = document.getElementById('media-cat-icon');
+
+                    if (catNameEl && targetCatName) targetCatName.innerText = catNameEl.innerText.trim();
+                    if (catIconEl && targetCatIcon) {
+                        targetCatIcon.innerHTML = catIconEl.outerHTML;
+                        const copiedSvg = targetCatIcon.querySelector('svg');
+                        if (copiedSvg) copiedSvg.setAttribute('class', 'w-5 h-5 text-amber-300');
+                    }
+                }
+            }
+
+            // トラックリスト内のアクティブ強調表示
+            document.querySelectorAll('#playlist .group').forEach(el => {
+                el.classList.remove('track-active', 'bg-white', 'shadow-md');
+            });
+            if (element) {
+                element.classList.add('track-active', 'bg-white', 'shadow-md');
+            }
+
+            // エピソードデータの設定
+            currentEpisodes = Array.isArray(episodes) ? episodes : [episodes];
+            episodeIndex = 0;
+            renderCurrentEpisode();
+        }
+
+        /**
+         * 現在のエピソードコメントを描画
+         */
+        function renderCurrentEpisode() {
+            const episodeTextEl = document.getElementById('media-episode-text');
+            if (!episodeTextEl || currentEpisodes.length === 0) return;
+
+            episodeTextEl.classList.remove('insight-text-anim');
+            void episodeTextEl.offsetWidth; // リフロー発生によるアニメーション再始動
+            episodeTextEl.innerText = currentEpisodes[episodeIndex] || "";
+            episodeTextEl.classList.add('insight-text-anim');
+        }
+
+        /**
+         * エピソードコメントの自動ローテーション開始（10秒間隔）
+         */
+        function startEpisodeRotation() {
+            stopEpisodeRotation();
+            episodeInterval = setInterval(() => {
+                if (currentEpisodes.length > 1) {
+                    episodeIndex = (episodeIndex + 1) % currentEpisodes.length;
+                    renderCurrentEpisode();
+                }
+            }, 10000);
+        }
+
+        /**
+         * ローテーション停止
+         */
+        function stopEpisodeRotation() {
+            if (episodeInterval) {
+                clearInterval(episodeInterval);
+                episodeInterval = null;
+            }
+        }
+
+        /**
+         * プレイヤー位置まで滑らかにスクロール
+         */
+        function scrollToPlayer() {
+            const mediaPanel = document.getElementById('media-panel');
+            if (mediaPanel) {
+                mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>
