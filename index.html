@@ -309,26 +309,11 @@
                             </div>
                             <div class="flex items-center gap-2">
                                 <h3 class="text-xs font-black text-amber-950 tracking-wider">家族の思い出ムービー</h3>
-                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">動画（YouTube / MP4）</span>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">動画（YouTube）</span>
                             </div>
                         </div>
                         
                         <div class="space-y-2.5">
-                            <!-- MP4動画 1: 正則・ミネ子自伝 -->
-                            <div onclick="playVideo('./masanori_mineko.mp4', '正則・ミネ子自伝', [
-                                '正則さんとミネ子さんの歩んでこられた大切な人生の記録・自伝映像です。',
-                                'ご家族や親族の歴史、思い出、次世代へのメッセージが詰まった大切な宝物。',
-                                'いつでもご家族みなさまで繰り返し鑑賞し、あたたかな絆を感じることができます。'
-                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-amber-200/90 hover:border-amber-400 hover:bg-white hover:shadow-md transition-all duration-300">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">正則・ミネ子自伝</h4>
-                                        <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 MP4動画 • 家族自伝・人生の記録</p>
-                                    </div>
-                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
-                                </div>
-                            </div>
-
                             <!-- YouTube動画 1 -->
                             <div onclick="playYouTube('dQw4w9WgXcQ', '【家族旅行】温泉めぐり＆古希のお祝い', [
                                 'ご両親の古希のお祝いを兼ねて家族みんなで出かけた温泉旅行の思い出映像です。',
@@ -374,7 +359,22 @@
                         </div>
 
                         <div class="space-y-2.5">
-                            <!-- オーディオ曲 1 -->
+                            <!-- オーディオ曲 1: 正則・ミネ子自伝 -->
+                            <div onclick="playAudio('./matome_chichi_haha.mp3', '正則・ミネ子自伝', [
+                                '正則さんとミネ子さんの歩んでこられた大切な人生の記録・語り（自伝）の音声アーカイブです。',
+                                'ご家族や親族の歴史、思い出、次世代への温かいメッセージが詰まった大切な宝物。',
+                                'いつでもご家族みなさまで語りや音楽に耳を傾け、あたたかな絆を感じることができます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">正則・ミネ子自伝</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族自伝・人生の記録</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 2 -->
                             <div onclick="playAudio('./music-komorojyoukoiuta.mp3', '小諸城恋歌（信州思い出の曲）', [
                                 'ご両親が大好きで、Driveのとき車内でよくかかっていた信州の情緒あふれる名曲です。',
                                 '信州の美しい山並みや古城の風景が目に浮かび、家族で出かけたドライブの風景が蘇ります。',
