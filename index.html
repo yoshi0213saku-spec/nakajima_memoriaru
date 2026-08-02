@@ -284,9 +284,9 @@
                         <h3 id="media-title" class="text-base md:text-xl font-black text-amber-300 block leading-snug title-serif">作品名・タイトル</h3>
                     </div>
 
-                    <!-- メディア画面領域 (YouTube iframe または Audio Player) -->
+                    <!-- メディア画面領域 (YouTube/MP4動画再生時に表示) -->
                     <div id="media-display-area" class="mb-5 rounded-2xl overflow-hidden bg-black/60 border border-amber-500/20">
-                        <!-- YouTube embed or Audio player gets inserted here dynamically -->
+                        <!-- YouTube embed or Video gets inserted here dynamically -->
                     </div>
 
                     <!-- エピソード・思い出メッセージ（自動切り替え表示） -->
@@ -296,6 +296,13 @@
                             <p id="media-episode-text" class="text-xs md:text-sm leading-relaxed font-medium text-amber-50 insight-text-anim"></p>
                         </div>
                     </div>
+                </div>
+
+                <!-- 枠下：音声プレイヤー（音楽再生時に進行具合・シークバーを表示） -->
+                <div id="audio-player-container" class="hidden mb-6 p-3.5 bg-amber-50/90 rounded-2xl border border-amber-200/80 shadow-inner">
+                    <audio id="main-audio-player" controls class="w-full h-10 focus:outline-none">
+                        お使いのブラウザはオーディオ再生に対応していません。
+                    </audio>
                 </div>
 
                 <!-- プレイリスト一覧 -->
@@ -370,26 +377,26 @@
                                         <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">正則・ミネ子自伝</h4>
                                         <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族自伝・人生の記録</p>
                                     </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
                                 </div>
                             </div>
 
-                            <!-- オーディオ曲 2 -->
-                            <div onclick="playAudio('./music-komorojyoukoiuta.mp3', '小諸城恋歌（信州思い出の曲）', [
-                                'ご両親が大好きで、Driveのとき車内でよくかかっていた信州の情緒あふれる名曲です。',
-                                '信州の美しい山並みや古城の風景が目に浮かび、家族で出かけたドライブの風景が蘇ります。',
-                                'ゆったりとした和の旋律が、日々の疲れを優しく癒やしてくれます。'
+                            <!-- オーディオ曲 3: 老松の歌 -->
+                            <div onclick="playAudio('./music_oimatu_uta.mp3', '老松の歌', [
+                                'ご家族の健康と長寿、そして絆の深まりを祝う温かな名曲です。',
+                                'どっしりと根を張り家族を見守る老松のように、あたたかく朗らかな旋律が広がります。',
+                                '親族が集まるおめでたい席や、ご家族で思い出を語り合うひとときにぴったりの一曲です。'
                             ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
                                 <div class="flex items-center justify-between">
                                     <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">小諸城恋歌（信州思い出の曲）</h4>
-                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族のお気に入り曲</p>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">老松の歌</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • お祝い・家族の曲</p>
                                     </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
                                 </div>
                             </div>
 
-                            <!-- オーディオ曲 2 -->
+                            <!-- オーディオ曲 4 -->
                             <div onclick="playAudio('./music-Melody of Dawn.mp3', '夜明けのメロディー (Melody of Dawn)', [
                                 '澄み渡る朝の光を思わせるアコースティックサウンド。ご家族でリラックスしたい時にぴったりの1曲。',
                                 '穏やかなピアノと優しい弦の響きが、心に温かな安らぎを与えてくれます。',
@@ -400,7 +407,7 @@
                                         <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">夜明けのメロディー (Melody of Dawn)</h4>
                                         <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • ヒーリングBGM</p>
                                     </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">試聴 🎧</span>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
                                 </div>
                             </div>
                         </div>
@@ -501,10 +508,12 @@
          * MP4動画再生モードの起動
          */
         function playVideo(videoUrl, title, episodes, element) {
+            stopAudioPlayer();
             setupMediaPanel(element, title, episodes, 'MP4動画');
 
             const displayArea = document.getElementById('media-display-area');
             if (displayArea) {
+                displayArea.classList.remove('hidden');
                 displayArea.innerHTML = `
                     <div class="video-container bg-black">
                         <video controls autoplay class="w-full h-full rounded-xl">
@@ -526,10 +535,12 @@
          * YouTube動画再生モードの起動
          */
         function playYouTube(youtubeId, title, episodes, element) {
+            stopAudioPlayer();
             setupMediaPanel(element, title, episodes, 'YouTube動画');
 
             const displayArea = document.getElementById('media-display-area');
             if (displayArea) {
+                displayArea.classList.remove('hidden');
                 displayArea.innerHTML = `
                     <div class="video-container">
                         <iframe 
@@ -555,19 +566,22 @@
         function playAudio(audioUrl, title, episodes, element) {
             setupMediaPanel(element, title, episodes, '音楽再生');
 
+            // 動画表示エリアは隠す
             const displayArea = document.getElementById('media-display-area');
             if (displayArea) {
-                displayArea.innerHTML = `
-                    <div class="p-6 text-center bg-gradient-to-r from-amber-950/60 to-gray-900/80">
-                        <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-300 border border-amber-400/30 animate-pulse">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
-                        </div>
-                        <audio id="main-audio-player" controls autoplay class="w-full h-10 focus:outline-none rounded-lg">
-                            <source src="${audioUrl}" type="audio/mpeg">
-                            お使いのブラウザはオーディオ再生に対応していません。
-                        </audio>
-                    </div>
-                `;
+                displayArea.innerHTML = '';
+                displayArea.classList.add('hidden');
+            }
+
+            // 枠下の音声プレイヤーを表示・セットアップ
+            const audioContainer = document.getElementById('audio-player-container');
+            const audioPlayer = document.getElementById('main-audio-player');
+            if (audioContainer && audioPlayer) {
+                audioContainer.classList.remove('hidden');
+                audioPlayer.src = audioUrl;
+                audioPlayer.play().catch(error => {
+                    console.log("Audio autoplay notification:", error);
+                });
             }
 
             const indicator = document.getElementById('playing-indicator');
@@ -575,6 +589,21 @@
 
             startEpisodeRotation();
             scrollToPlayer();
+        }
+
+        /**
+         * 音声プレイヤーの停止・非表示化
+         */
+        function stopAudioPlayer() {
+            const audioContainer = document.getElementById('audio-player-container');
+            const audioPlayer = document.getElementById('main-audio-player');
+            if (audioPlayer) {
+                audioPlayer.pause();
+                audioPlayer.src = '';
+            }
+            if (audioContainer) {
+                audioContainer.classList.add('hidden');
+            }
         }
 
         /**
