@@ -86,25 +86,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 1rem;
-        }
-
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            object-fit: contain;
-        }
-
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
@@ -153,9 +134,9 @@
                     <!-- 概要 本文 -->
                     <div class="text-xs md:text-sm text-gray-700 leading-relaxed space-y-3.5">
                         <p>「中島家メモリアルサイト」へようこそ。</p>
-                        <p>このサイトは、私達家族や兄弟、そして親族の皆さんが、いつでも気軽に集い、南相木村田屋をルーツとして、共に歩んできた大切な思い出を振り返ることができるように開設したメモリアルサイトです。</p>
+                        <p>このサイトは、私たち家族や兄妹、そして親族の皆さんが、いつでも気軽に集い、南相木村田屋をルーツとして、共に歩んできた大切な思い出を振り返ることができるように開設したメモリアルサイトです。</p>
                         <p>このサイトでは、ルーツの源である田屋に三百年受け継がれてきた「老松の歌」をはじめ、父と母の生い立ちや人生の歩みを、音声でお聴きいただけます。また、以前発行した父と母の自分史『春秋の記』とあわせてご覧いただくことで、より深く二人の歩みを感じていただける内容となっています。</p>
-                        <p>遠く離れて暮らしていても、このサイトを開けば、いつでもふるさとや家族、独立した子供たち、そしてルーツとのつながりを感じていただけることを願っています。</p>
+                        <p>遠く離れて暮らしていても、このサイトを開けば、いつでもふるさとや家族、そしてルーツとのつながりを感じていただけることを願っています。</p>
                         <p class="font-bold text-amber-900 pt-1">このサイトが、家族や親族の絆を深め、懐かしい思い出を語り合い、次の世代へと受け継いでいく場として、末永く親しまれることを願っています。</p>
                     </div>
                 </section>
@@ -263,8 +244,8 @@
                     <span id="playing-indicator" class="text-[10px] text-gray-400 font-medium">リストから動画・音楽を選択してください</span>
                 </div>
 
-                <!-- メディア再生表示エリア（YouTubeまたはAudio） -->
-                <div id="media-panel" class="hidden mb-6 glass-card rounded-3xl p-5 md:p-7 bg-gradient-to-br from-amber-950 via-gray-900 to-amber-900 text-white shadow-2xl border border-amber-500/30 transition-all duration-300 scroll-mt-20">
+                <!-- メディア再生表示エリア（Audio / Video Dynamic Panel） -->
+                <div id="media-panel" class="hidden mb-6 glass-card rounded-3xl p-5 md:p-7 bg-gradient-to-br from-amber-950 via-gray-900 to-amber-900 text-white shadow-2xl border border-amber-500/30 transition-all duration-300 scroll-mt-24">
                     
                     <!-- 上部ヘッダー（カテゴリー情報 & タグ） -->
                     <div class="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-amber-500/30">
@@ -286,7 +267,14 @@
 
                     <!-- メディア画面領域 -->
                     <div id="media-display-area" class="mb-5 rounded-2xl overflow-hidden bg-black/60 border border-amber-500/20">
-                        <!-- Dynamic media inserted here -->
+                        <!-- Dynamic content via JS -->
+                    </div>
+
+                    <!-- 音声プレイヤー本体 -->
+                    <div id="audio-player-container" class="hidden mb-5 p-3.5 bg-amber-500/10 rounded-2xl border border-amber-400/30 backdrop-blur-md">
+                        <audio id="main-audio-player" controls class="w-full h-10 focus:outline-none">
+                            お使いのブラウザはオーディオ再生に対応していません。
+                        </audio>
                     </div>
 
                     <!-- エピソード・思い出メッセージ -->
@@ -296,13 +284,6 @@
                             <p id="media-episode-text" class="text-xs md:text-sm leading-relaxed font-medium text-amber-50 insight-text-anim"></p>
                         </div>
                     </div>
-                </div>
-
-                <!-- 枠下：音声プレイヤー -->
-                <div id="audio-player-container" class="hidden mb-6 p-3.5 bg-amber-50/90 rounded-2xl border border-amber-200/80 shadow-inner">
-                    <audio id="main-audio-player" controls class="w-full h-10 focus:outline-none">
-                        お使いのブラウザはオーディオ再生に対応していません。
-                    </audio>
                 </div>
 
                 <!-- プレイリスト一覧 -->
@@ -584,6 +565,7 @@
             const audioContainer = document.getElementById('audio-player-container');
             const mainAudio = document.getElementById('main-audio-player');
             const indicator = document.getElementById('playing-indicator');
+            const mediaDisplay = document.getElementById('media-display-area');
 
             mediaPanel.classList.remove('hidden');
             audioContainer.classList.remove('hidden');
@@ -593,23 +575,50 @@
             document.getElementById('media-type-badge').textContent = 'オーディオ曲';
             document.getElementById('media-title').textContent = title;
 
-            document.getElementById('media-display-area').innerHTML = `
+            // 初期表示
+            mediaDisplay.innerHTML = `
                 <div class="p-6 text-center bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950">
                     <div class="w-16 h-16 mx-auto mb-3 rounded-full bg-indigo-500/20 border border-indigo-400/40 flex items-center justify-center text-indigo-300 animate-pulse">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
                     </div>
-                    <p class="text-xs text-indigo-200 font-bold">🎵 音声トラック再生中</p>
+                    <p id="audio-status-text" class="text-xs text-indigo-200 font-bold">🎵 準備中...</p>
                 </div>
             `;
 
-            indicator.textContent = `再生中: ${title}`;
+            indicator.textContent = `再生準備: ${title}`;
             setEpisodes(episodes);
+
+            // エラーハンドリング
+            mainAudio.onerror = function() {
+                const statusEl = document.getElementById('audio-status-text');
+                if (statusEl) {
+                    statusEl.innerHTML = `<span class="text-rose-300">⚠️ 音声ファイルが見つかりません (${src})<br><span class="text-[10px] font-normal text-gray-300">HTMLファイルと同じフォルダにMP3ファイルがあるかご確認ください。</span></span>`;
+                }
+                indicator.textContent = `エラー: ${title}`;
+            };
 
             mainAudio.src = src;
             mainAudio.load();
-            mainAudio.play().catch(e => console.log('Audio autoplay prevented:', e));
 
-            mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // 再生試行
+            const playPromise = mainAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    const statusEl = document.getElementById('audio-status-text');
+                    if (statusEl) statusEl.textContent = '🎵 音声トラック再生中';
+                    indicator.textContent = `再生中: ${title}`;
+                }).catch(error => {
+                    console.log('Autoplay was prevented by browser:', error);
+                    const statusEl = document.getElementById('audio-status-text');
+                    if (statusEl) {
+                        statusEl.innerHTML = `🎵 音声トラックを準備しました<br><span class="text-[11px] font-normal text-amber-200">※自動再生がブロックされました。下の再生ボタン（▶）を押してください。</span>`;
+                    }
+                    indicator.textContent = `選択中: ${title}`;
+                });
+            }
+
+            // スクロール位置の調整
+            mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function selectYouTubeItem(youtubeId, title, episodes, element) {
@@ -623,7 +632,6 @@
             const mainAudio = document.getElementById('main-audio-player');
             const indicator = document.getElementById('playing-indicator');
 
-            // Pause audio if playing
             if (!mainAudio.paused) {
                 mainAudio.pause();
             }
@@ -651,7 +659,7 @@
             indicator.textContent = `選択中: ${title}`;
             setEpisodes(episodes);
 
-            mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     </script>
 </body>
