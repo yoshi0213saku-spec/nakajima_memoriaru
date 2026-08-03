@@ -169,27 +169,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         
-                        <!-- 1. 家族の思い出ムービー -->
-                        <a href="#cat-movies" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/40 rounded-2xl border border-amber-200/70 hover:border-amber-400 transition-all block group shadow-sm">
-                            <div class="flex items-start space-x-3.5">
-                                <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-amber-700">
-                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex items-center justify-between mb-1">
-                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
-                                            家族の思い出ムービー
-                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">YouTube</span>
-                                        </h4>
-                                    </div>
-                                    <p class="text-[11px] text-gray-500 leading-relaxed">家族旅行や親族の集まり、お祝い事など、大切なイベントの映像記録アーカイブ。</p>
-                                </div>
-                            </div>
-                        </a>
-
-                        <!-- 2. 我が家の名曲アルバム -->
+                        <!-- 1. 我が家の名曲アルバム -->
                         <a href="#cat-music" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-indigo-50/30 rounded-2xl border border-indigo-100 hover:border-indigo-300 transition-all block group shadow-sm">
                             <div class="flex items-start space-x-3.5">
                                 <div class="w-10 h-10 rounded-xl bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-indigo-700">
@@ -205,6 +185,26 @@
                                         </h4>
                                     </div>
                                     <p class="text-[11px] text-gray-500 leading-relaxed">ご両親や兄弟みんなで口ずさんだ思い出の曲、心癒やされる家族のお気に入りソング。</p>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- 2. 家族の思い出ムービー -->
+                        <a href="#cat-movies" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/40 rounded-2xl border border-amber-200/70 hover:border-amber-400 transition-all block group shadow-sm">
+                            <div class="flex items-start space-x-3.5">
+                                <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-amber-700">
+                                    <svg class="cat-icon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h4 class="text-sm font-black text-gray-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
+                                            家族の思い出ムービー
+                                            <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">YouTube</span>
+                                        </h4>
+                                    </div>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">家族旅行や親族の集まり、お祝い事など、大切なイベントの映像記録アーカイブ。</p>
                                 </div>
                             </div>
                         </a>
@@ -308,7 +308,97 @@
                 <!-- プレイリスト一覧 -->
                 <div class="space-y-6" id="playlist">
 
-                    <!-- カテゴリー1: 家族の思い出ムービー -->
+                    <!-- カテゴリー1: 我が家の名曲アルバム -->
+                    <div id="cat-music" class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-3 scroll-mt-6">
+                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-indigo-200/60">
+                            <div class="w-7 h-7 rounded-lg bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm text-indigo-700">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-xs font-black text-indigo-950 tracking-wider">我が家の名曲アルバム</h3>
+                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">オーディオ曲</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            <!-- オーディオ曲 1: 正則・ミネ子自伝 -->
+                            <div onclick="playAudio('./matome_chichi_haha.mp3', '正則・ミネ子自伝', [
+                                '正則さんとミネ子さんの歩んでこられた大切な人生の記録・語り（自伝）の音声アーカイブです。',
+                                'ご家族や親族の歴史、思い出、次世代への温かいメッセージが詰まった大切な宝物。',
+                                'いつでもご家族みなさまで語りや音楽に耳を傾け、あたたかな絆を感じることができます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">正則・ミネ子自伝</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族自伝・人生の記録</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 2: 父の生きた道 -->
+                            <div onclick="playAudio('./music_chichi_ikita_michi.mp3', '父の生きた道', [
+                                'ご家族を静かに温かく支えてくれた、お父様の歩まれてきた人生を讃える曲です。',
+                                'どんな時も誠実に力強く家族を守り抜いたお父様の背中と、温かな面影が胸に浮かんできます。',
+                                'ご家族みんなで聴きながら、感謝と尊敬の思いを深めることができる大切な一曲です。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">父の生きた道</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 父への感謝と人生の記録</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 3: 母の生きた道 -->
+                            <div onclick="playAudio('./music_haha_ikita_michi.mp3', '母の生きた道', [
+                                'いつも優しさと笑顔でご家族を包み込んでくれた、お母様の溢れる愛と歩みの歌です。',
+                                '家族のために注いでくれた温かな日々や、忘れられない思い出の数々が優しく蘇ります。',
+                                'お母様への深い感謝の気持ちとともに、いつまでも心に寄り添う宝物のような一曲です。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">母の生きた道</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 母への感謝と愛の歌</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 4: 父と母の生きた道 -->
+                            <div onclick="playAudio('./music_chichi_haha.mp3', '父と母の生きた道', [
+                                '仲睦まじく共に歩んでこられたお父様とお母様の、二人で創り上げた人生の物語を歌った曲です。',
+                                '長きにわたる人生の歩みと互いを想う深い絆は、子どもたちや孫たちへの最高の贈り物です。',
+                                'ご家族・ご親族が集う場所で、ご両親の素晴らしい足跡を称え合い、絆を確かめ合えます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">父と母の生きた道</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 両親の歩みと家族の絆</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
+                                </div>
+                            </div>
+
+                            <!-- オーディオ曲 5: 老松の歌 -->
+                            <div onclick="playAudio('./music_oimatu_uta.mp3', '老松の歌', [
+                                'ご家族の健康と長寿、そして絆の深まりを祝う温かな名曲です。',
+                                'どっしりと根を張り家族を見守る老松のように、あたたかく朗らかな旋律が広がります。',
+                                '親族が集まるおめでたい席や、ご家族で思い出を語り合うひとときにぴったりの一曲です。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">老松の歌</h4>
+                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • お祝い・家族の曲</p>
+                                    </div>
+                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- カテゴリー2: 家族の思い出ムービー -->
                     <div id="cat-movies" class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-3 scroll-mt-6">
                         <div class="flex items-center space-x-2.5 pb-2.5 border-b border-amber-200/80">
                             <div class="w-7 h-7 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm text-amber-800">
@@ -348,81 +438,6 @@
                                         <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 正月親族会</p>
                                     </div>
                                     <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- カテゴリー2: 我が家の名曲アルバム -->
-                    <div id="cat-music" class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-3 scroll-mt-6">
-                        <div class="flex items-center space-x-2.5 pb-2.5 border-b border-indigo-200/60">
-                            <div class="w-7 h-7 rounded-lg bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm text-indigo-700">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <h3 class="text-xs font-black text-indigo-950 tracking-wider">我が家の名曲アルバム</h3>
-                                <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">オーディオ曲</span>
-                            </div>
-                        </div>
-
-                        <div class="space-y-2.5">
-                            <!-- オーディオ曲 1: 正則・ミネ子自伝 -->
-                            <div onclick="playAudio('./matome_chichi_haha.mp3', '正則・ミネ子自伝', [
-                                '正則さんとミネ子さんの歩んでこられた大切な人生の記録・語り（自伝）の音声アーカイブです。',
-                                'ご家族や親族の歴史、思い出、次世代への温かいメッセージが詰まった大切な宝物。',
-                                'いつでもご家族みなさまで語りや音楽に耳を傾け、あたたかな絆を感じることができます。'
-                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">正則・ミネ子自伝</h4>
-                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族自伝・人生の記録</p>
-                                    </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
-                                </div>
-                            </div>
-
-                            <!-- オーディオ曲 3: 老松の歌 -->
-                            <div onclick="playAudio('./music_oimatu_uta.mp3', '老松の歌', [
-                                'ご家族の健康と長寿、そして絆の深まりを祝う温かな名曲です。',
-                                'どっしりと根を張り家族を見守る老松のように、あたたかく朗らかな旋律が広がります。',
-                                '親族が集まるおめでたい席や、ご家族で思い出を語り合うひとときにぴったりの一曲です。'
-                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">老松の歌</h4>
-                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • お祝い・家族の曲</p>
-                                    </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
-                                </div>
-                            </div>
-
-                            <!-- オーディオ曲 4: 父の生き様 -->
-                            <div onclick="playAudio('./music_chichi_no_ikizama2.mp3', '父の生き様', [
-                                'ご両親の歩んでこられた誠実で力強い生き様を歌い上げた、家族の誇りとなる名曲です。',
-                                '家族のために情熱を注ぎ、支え続けてくれた感謝の思いが静かに心に染み渡ります。',
-                                '節目のお祝い事やご家族が集まる席で、歩みを振り返りながら大切に聴き継ぎたい一曲です。'
-                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">父の生き様</h4>
-                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族の歩み・父親への感謝</p>
-                                    </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
-                                </div>
-                            </div>
-
-                            <!-- オーディオ曲 5: 母の道 -->
-                            <div onclick="playAudio('./music_haha_no_nichi2.mp3', '母の道', [
-                                'いつも優しく温かく家族を包み込み、温もりを与え続けてくれたお母様への感謝の歌です。',
-                                'どんな時も笑顔で支えてくれた温かな日々や、言葉に尽くせない深い愛情が蘇ります。',
-                                '家族みんなで感謝の気持ちを重ね合わせ、あたたかな余韻に浸ることができる大切な曲です。'
-                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-indigo-100 hover:border-indigo-300 hover:bg-white hover:shadow-md transition-all duration-300">
-                                <div class="flex items-center justify-between">
-                                    <div>
-                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-indigo-700">母の道</h4>
-                                        <p class="text-[10px] text-indigo-500 font-medium mt-0.5">🎵 音楽ファイル • 家族の思い出・母親への感謝</p>
-                                    </div>
-                                    <span class="text-xs text-indigo-600 font-bold bg-indigo-50 px-2.5 py-1 rounded-lg border border-indigo-100">聴く 🎧</span>
                                 </div>
                             </div>
                         </div>
