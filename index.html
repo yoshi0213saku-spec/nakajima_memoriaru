@@ -423,7 +423,9 @@
                                         <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">正則・ミネ子自伝 絵解き動画</h4>
                                         <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 両親の自伝・絵解き</p>
                                     </div>
-                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                    <span class="text-xs text-white font-bold bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg shadow-sm transition-all flex items-center gap-1">
+                                        ▶ YouTubeで開く ↗
+                                    </span>
                                 </div>
                             </div>
 
@@ -438,7 +440,9 @@
                                         <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">【家族旅行】温泉めぐり＆古希のお祝い</h4>
                                         <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 家族旅行・お祝い</p>
                                     </div>
-                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                    <span class="text-xs text-white font-bold bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg shadow-sm transition-all flex items-center gap-1">
+                                        ▶ YouTubeで開く ↗
+                                    </span>
                                 </div>
                             </div>
 
@@ -453,7 +457,9 @@
                                         <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">【親族大集合】お正月の親睦会＆思い出トーク</h4>
                                         <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 正月親族会</p>
                                     </div>
-                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                    <span class="text-xs text-white font-bold bg-red-600 hover:bg-red-700 px-3 py-1.5 rounded-lg shadow-sm transition-all flex items-center gap-1">
+                                        ▶ YouTubeで開く ↗
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -578,18 +584,20 @@
         }
 
         /**
-         * YouTube動画案内モードの起動（埋め込みではなくYouTubeを直接開く方式）
+         * YouTube動画案内モードの起動（新しいタブでYouTubeを開きつつ情報表示）
          */
         function playYouTube(youtubeId, title, episodes, element) {
             stopAudioPlayer();
             setupMediaPanel(element, title, episodes, 'YouTube動画');
+
+            const youtubeUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
 
             const displayArea = document.getElementById('media-display-area');
             if (displayArea) {
                 displayArea.classList.remove('hidden');
                 displayArea.innerHTML = `
                     <div class="p-3 md:p-5 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-amber-500/30 text-center space-y-3">
-                        <a href="https://www.youtube.com/watch?v=${youtubeId}" target="_blank" rel="noopener noreferrer" class="group relative block w-full aspect-video rounded-xl overflow-hidden bg-gray-900 border border-amber-500/20 shadow-xl transition-all duration-300 hover:border-amber-400 hover:shadow-amber-500/20">
+                        <a href="${youtubeUrl}" target="_blank" rel="noopener noreferrer" class="group relative block w-full aspect-video rounded-xl overflow-hidden bg-gray-900 border border-amber-500/20 shadow-xl transition-all duration-300 hover:border-amber-400 hover:shadow-amber-500/20">
                             <img src="https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100" onerror="this.onerror=null; this.src='https://placehold.co/640x360/1f2937/d97706?text=YouTube+Video';">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 flex flex-col items-center justify-center p-4">
                                 <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-red-600 group-hover:bg-red-500 flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300 border-2 border-white/80 mb-3">
@@ -600,16 +608,19 @@
                                 </span>
                             </div>
                         </a>
-                        <p class="text-xs text-amber-200/80 font-medium">※ クリックするとYouTube（限定公開）が新しいタブで開きます。</p>
+                        <p class="text-xs text-amber-200/80 font-medium">※ クリックすると新しいタブでYouTubeが開きます。</p>
                     </div>
                 `;
             }
 
             const indicator = document.getElementById('playing-indicator');
-            if (indicator) indicator.innerText = "🎬 YouTube案内: " + title;
+            if (indicator) indicator.innerText = "🎬 YouTube: " + title;
 
             startEpisodeRotation();
             scrollToPlayer();
+
+            // 新しいタブでYouTubeを開く
+            window.open(youtubeUrl, '_blank');
         }
 
         /**
