@@ -412,6 +412,21 @@
                         </div>
                         
                         <div class="space-y-2.5">
+                            <!-- YouTube動画: 正則・ミネ子自伝 絵解き動画 -->
+                            <div onclick="playYouTube('oa-5SApdWZc', '正則・ミネ子自伝 絵解き動画', [
+                                '父（正則）と母（ミネ子）が歩んできた波乱万丈で温かな人生の物語を、分かりやすい絵解きで描いた特別ムービーです。',
+                                '二人が出会い、共に手を取り合って築いてきた中島家の歩みと、私たちが受け継ぐ大切な想いが詰まっています。',
+                                '自分史『春秋の記』や音声アーカイブとあわせてご覧いただくことで、父と母の足跡をより深く感じることができます。'
+                            ], this)" class="group cursor-pointer p-3.5 rounded-xl bg-white/80 border border-amber-100 hover:border-amber-400 hover:bg-white hover:shadow-md transition-all duration-300">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="text-sm font-bold text-gray-800 group-hover:text-amber-700">正則・ミネ子自伝 絵解き動画</h4>
+                                        <p class="text-[10px] text-amber-600 font-medium mt-0.5">🎬 YouTube動画 • 両親の自伝・絵解き</p>
+                                    </div>
+                                    <span class="text-xs text-amber-500 font-bold bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">再生 ▷</span>
+                                </div>
+                            </div>
+
                             <!-- YouTube動画 1 -->
                             <div onclick="playYouTube('dQw4w9WgXcQ', '【家族旅行】温泉めぐり＆古希のお祝い', [
                                 '父と母の古希のお祝いを兼ねて、家族みんなで出かけた温泉旅行の思い出映像です。',
@@ -563,7 +578,7 @@
         }
 
         /**
-         * YouTube動画再生モードの起動
+         * YouTube動画案内モードの起動（埋め込みではなくYouTubeを直接開く方式）
          */
         function playYouTube(youtubeId, title, episodes, element) {
             stopAudioPlayer();
@@ -573,19 +588,25 @@
             if (displayArea) {
                 displayArea.classList.remove('hidden');
                 displayArea.innerHTML = `
-                    <div class="video-container">
-                        <iframe 
-                            src="https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0" 
-                            title="${title}" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                    <div class="p-3 md:p-5 bg-gradient-to-br from-gray-900 to-black rounded-2xl border border-amber-500/30 text-center space-y-3">
+                        <a href="https://www.youtube.com/watch?v=${youtubeId}" target="_blank" rel="noopener noreferrer" class="group relative block w-full aspect-video rounded-xl overflow-hidden bg-gray-900 border border-amber-500/20 shadow-xl transition-all duration-300 hover:border-amber-400 hover:shadow-amber-500/20">
+                            <img src="https://img.youtube.com/vi/${youtubeId}/hqdefault.jpg" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-85 group-hover:opacity-100" onerror="this.onerror=null; this.src='https://placehold.co/640x360/1f2937/d97706?text=YouTube+Video';">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/20 flex flex-col items-center justify-center p-4">
+                                <div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-red-600 group-hover:bg-red-500 flex items-center justify-center shadow-xl group-hover:scale-110 transition-all duration-300 border-2 border-white/80 mb-3">
+                                    <svg class="w-7 h-7 md:w-8 md:h-8 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                                <span class="text-xs md:text-sm font-bold text-white bg-red-600/90 group-hover:bg-red-600 px-5 py-2 rounded-full border border-white/30 backdrop-blur-sm transition-all shadow-md">
+                                    ▶ YouTubeでこの動画を再生（クリックして開く ↗）
+                                </span>
+                            </div>
+                        </a>
+                        <p class="text-xs text-amber-200/80 font-medium">※ クリックするとYouTube（限定公開）が新しいタブで開きます。</p>
                     </div>
                 `;
             }
 
             const indicator = document.getElementById('playing-indicator');
-            if (indicator) indicator.innerText = "🎬 動画再生中: " + title;
+            if (indicator) indicator.innerText = "🎬 YouTube案内: " + title;
 
             startEpisodeRotation();
             scrollToPlayer();
@@ -594,139 +615,4 @@
         /**
          * オーディオ（音楽）再生モードの起動
          */
-        function playAudio(audioUrl, title, episodes, element) {
-            setupMediaPanel(element, title, episodes, '音楽再生');
-
-            // 動画表示エリアは隠す
-            const displayArea = document.getElementById('media-display-area');
-            if (displayArea) {
-                displayArea.innerHTML = '';
-                displayArea.classList.add('hidden');
-            }
-
-            // 枠下の音声プレイヤーを表示・セットアップ
-            const audioContainer = document.getElementById('audio-player-container');
-            const audioPlayer = document.getElementById('main-audio-player');
-            if (audioContainer && audioPlayer) {
-                audioContainer.classList.remove('hidden');
-                audioPlayer.src = audioUrl;
-                audioPlayer.play().catch(error => {
-                    console.log("Audio autoplay notification:", error);
-                });
-            }
-
-            const indicator = document.getElementById('playing-indicator');
-            if (indicator) indicator.innerText = "🎵 音楽再生中: " + title;
-
-            startEpisodeRotation();
-            scrollToPlayer();
-        }
-
-        /**
-         * 音声プレイヤーの停止・非表示化
-         */
-        function stopAudioPlayer() {
-            const audioContainer = document.getElementById('audio-player-container');
-            const audioPlayer = document.getElementById('main-audio-player');
-            if (audioPlayer) {
-                audioPlayer.pause();
-                audioPlayer.src = '';
-            }
-            if (audioContainer) {
-                audioContainer.classList.add('hidden');
-            }
-        }
-
-        /**
-         * メディアパネルの共通UI更新処理
-         */
-        function setupMediaPanel(element, title, episodes, typeName) {
-            const mediaPanel = document.getElementById('media-panel');
-            const mediaTitle = document.getElementById('media-title');
-            const mediaTypeBadge = document.getElementById('media-type-badge');
-            
-            if (mediaPanel) mediaPanel.classList.remove('hidden');
-            if (mediaTitle) mediaTitle.innerText = title;
-            if (mediaTypeBadge) mediaTypeBadge.innerText = typeName;
-
-            // 親カテゴリー情報の取得とプレイヤーへの自動反映
-            if (element) {
-                const catCard = element.closest('[id^="cat-"]');
-                if (catCard) {
-                    const catNameEl = catCard.querySelector('h3');
-                    const catIconEl = catCard.querySelector('svg');
-
-                    const targetCatName = document.getElementById('media-cat-name');
-                    const targetCatIcon = document.getElementById('media-cat-icon');
-
-                    if (catNameEl && targetCatName) targetCatName.innerText = catNameEl.innerText.trim();
-                    if (catIconEl && targetCatIcon) {
-                        targetCatIcon.innerHTML = catIconEl.outerHTML;
-                        const copiedSvg = targetCatIcon.querySelector('svg');
-                        if (copiedSvg) copiedSvg.setAttribute('class', 'w-5 h-5 text-amber-300');
-                    }
-                }
-            }
-
-            // トラックリスト内のアクティブ強調表示
-            document.querySelectorAll('#playlist .group').forEach(el => {
-                el.classList.remove('track-active', 'bg-white', 'shadow-md');
-            });
-            if (element) {
-                element.classList.add('track-active', 'bg-white', 'shadow-md');
-            }
-
-            // エピソードデータの設定
-            currentEpisodes = Array.isArray(episodes) ? episodes : [episodes];
-            episodeIndex = 0;
-            renderCurrentEpisode();
-        }
-
-        /**
-         * 現在のエピソードコメントを描画
-         */
-        function renderCurrentEpisode() {
-            const episodeTextEl = document.getElementById('media-episode-text');
-            if (!episodeTextEl || currentEpisodes.length === 0) return;
-
-            episodeTextEl.classList.remove('insight-text-anim');
-            void episodeTextEl.offsetWidth; // リフロー発生によるアニメーション再始動
-            episodeTextEl.innerText = currentEpisodes[episodeIndex] || "";
-            episodeTextEl.classList.add('insight-text-anim');
-        }
-
-        /**
-         * エピソードコメントの自動ローテーション開始（10秒間隔）
-         */
-        function startEpisodeRotation() {
-            stopEpisodeRotation();
-            episodeInterval = setInterval(() => {
-                if (currentEpisodes.length > 1) {
-                    episodeIndex = (episodeIndex + 1) % currentEpisodes.length;
-                    renderCurrentEpisode();
-                }
-            }, 10000);
-        }
-
-        /**
-         * ローテーション停止
-         */
-        function stopEpisodeRotation() {
-            if (episodeInterval) {
-                clearInterval(episodeInterval);
-                episodeInterval = null;
-            }
-        }
-
-        /**
-         * プレイヤー位置まで滑らかにスクロール
-         */
-        function scrollToPlayer() {
-            const mediaPanel = document.getElementById('media-panel');
-            if (mediaPanel) {
-                mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
-    </script>
-</body>
-</html>
+<!-- ... existing code -->
