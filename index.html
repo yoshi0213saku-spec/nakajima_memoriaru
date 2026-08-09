@@ -96,7 +96,7 @@
     <div class="max-w-3xl mx-auto px-4 py-8 md:py-12">
 
         <!-- ヘッダー -->
-        <header class="text-center mb-10 fade-in" style="animation-delay: 0.05s;">
+        <header class="text-center mb-8 fade-in" style="animation-delay: 0.05s;">
             <div class="inline-flex items-center space-x-2 bg-amber-50 px-4 py-1.5 rounded-full mb-5 border border-amber-200/60 shadow-sm">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
@@ -115,6 +115,70 @@
                 <p class="text-xs md:text-sm text-gray-500 font-medium">家族・親族の思い出をいつでも一緒に楽しめるデジタルアーカイブ</p>
             </div>
         </header>
+
+        <!-- トップ画像スライドショー（3案入れ替え） -->
+        <div class="mb-8 fade-in" style="animation-delay: 0.08s;">
+            <div class="relative rounded-3xl overflow-hidden glass-card shadow-lg border border-amber-200/60 group">
+                <!-- スライド表示領域 -->
+                <div id="hero-slider" class="relative w-full aspect-[16/9] md:aspect-[21/9] bg-amber-950/20 overflow-hidden">
+                    
+                    <!-- スライド 1: 古い家の写真 1 -->
+                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100 ease-in-out">
+                        <img src="./gazo_hurui_ie1.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/8a5a36/ffffff?text=%E5%8F%A4%E3%81%84%E3%81%A1%E3%81%AE%E5%86%99%E7%9C%91+1';" 
+                             alt="古い家の写真 1" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
+                                🏠 古い家の写真 1
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- スライド 2: 古い家の写真 2 -->
+                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 ease-in-out pointer-events-none">
+                        <img src="./gazo_hurui_ie2.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/7c4a27/ffffff?text=%E5%8F%A4%E3%81%84%E3%81%A1%E3%81%AE%E5%86%99%E7%9C%91+2';" 
+                             alt="古い家の写真 2" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
+                                🏠 古い家の写真 2
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- スライド 3: 新しい家の写真 -->
+                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 ease-in-out pointer-events-none">
+                        <img src="./gazo_atarashi_ie.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/3b6b58/ffffff?text=%E6%96%B0%E3%81%97%E3%81%84%E5%AE%B6%E3%81%AE%E5%86%99%E7%9C%91';" 
+                             alt="新しい家の写真" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
+                                🏡 新しい家の写真
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ナビゲーションボタン（左右矢印） -->
+                <button onclick="prevHeroSlide()" aria-label="前の写真" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 group-hover:opacity-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button onclick="nextHeroSlide()" aria-label="次の写真" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 group-hover:opacity-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+
+                <!-- スライド表示インジケーター（ドット） -->
+                <div class="absolute bottom-3 right-4 flex space-x-2 z-10">
+                    <button onclick="goToHeroSlide(0)" class="hero-dot h-2.5 rounded-full bg-white transition-all duration-300 shadow-md w-6" aria-label="スライド1"></button>
+                    <button onclick="goToHeroSlide(1)" class="hero-dot h-2.5 rounded-full bg-white/50 transition-all duration-300 shadow-md w-2.5" aria-label="スライド2"></button>
+                    <button onclick="goToHeroSlide(2)" class="hero-dot h-2.5 rounded-full bg-white/50 transition-all duration-300 shadow-md w-2.5" aria-label="スライド3"></button>
+                </div>
+            </div>
+        </div>
 
         <div class="space-y-8 fade-in" style="animation-delay: 0.1s;">
             
@@ -151,7 +215,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         
-                        <!-- 1. 家族の思い出音楽館 -->
+                        <!-- 1. 中島家ルーツの音楽館 -->
                         <a href="#cat-music" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-indigo-50/30 rounded-2xl border border-indigo-100 hover:border-indigo-300 transition-all block group shadow-sm">
                             <div class="flex items-start space-x-3.5">
                                 <div class="w-10 h-10 rounded-xl bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-indigo-700">
@@ -162,7 +226,7 @@
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between mb-1">
                                         <h4 class="text-sm font-black text-gray-800 group-hover:text-indigo-700 transition-colors flex items-center gap-1.5">
-                                            家族の思い出音楽館
+                                            中島家ルーツの音楽館
                                             <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">音楽 / 歌</span>
                                         </h4>
                                     </div>
@@ -171,7 +235,7 @@
                             </div>
                         </a>
 
-                        <!-- 2. 家族の思い出ムービー -->
+                        <!-- 2. 中島家ルーツのムービー -->
                         <a href="#cat-movies" class="category-card p-4 bg-gradient-to-br from-white via-slate-50/50 to-amber-50/40 rounded-2xl border border-amber-200/70 hover:border-amber-400 transition-all block group shadow-sm">
                             <div class="flex items-start space-x-3.5">
                                 <div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm overflow-hidden text-amber-700">
@@ -182,11 +246,11 @@
                                 <div class="flex-1">
                                     <div class="flex items-center justify-between mb-1">
                                         <h4 class="text-sm font-black text-gray-800 group-hover:text-amber-700 transition-colors flex items-center gap-1.5">
-                                            家族の思い出ムービー
+                                            中島家ルーツのムービー
                                             <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">YouTube</span>
                                         </h4>
                                     </div>
-                                    <p class="text-[11px] text-gray-500 leading-relaxed">家族旅行や親族の集まり、お祝い事など、大切なイベントの映像記録アーカイブ。</p>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed">父と母の自伝絵解き動画や『老松の歌』、ゆかりの地の映像記録など、中島家の足跡とルーツを動画でお楽しみいただけます。</p>
                                 </div>
                             </div>
                         </a>
@@ -289,14 +353,14 @@
                 <!-- プレイリスト一覧 -->
                 <div class="space-y-6" id="playlist">
 
-                    <!-- カテゴリー1: 家族の思い出音楽館 -->
+                    <!-- カテゴリー1: 中島家ルーツの音楽館 -->
                     <div id="cat-music" class="p-4 rounded-2xl bg-indigo-50/50 border border-indigo-100 space-y-3 scroll-mt-20">
                         <div class="flex items-center space-x-2.5 pb-2.5 border-b border-indigo-200/60">
                             <div class="w-7 h-7 rounded-lg bg-indigo-100 border border-indigo-200 flex items-center justify-center shrink-0 shadow-sm text-indigo-700">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>
                             </div>
                             <div class="flex items-center gap-2">
-                                <h3 class="text-xs font-black text-indigo-950 tracking-wider">家族の思い出音楽館</h3>
+                                <h3 class="text-xs font-black text-indigo-950 tracking-wider">中島家ルーツの音楽館</h3>
                                 <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 border border-indigo-200">オーディオ曲</span>
                             </div>
                         </div>
@@ -379,14 +443,14 @@
                         </div>
                     </div>
 
-                    <!-- カテゴリー2: 家族の思い出ムービー -->
+                    <!-- カテゴリー2: 中島家ルーツのムービー -->
                     <div id="cat-movies" class="p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-3 scroll-mt-20">
                         <div class="flex items-center space-x-2.5 pb-2.5 border-b border-amber-200/80">
                             <div class="w-7 h-7 rounded-lg bg-amber-100 border border-amber-300 flex items-center justify-center shrink-0 shadow-sm text-amber-800">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                             </div>
                             <div class="flex items-center gap-2">
-                                <h3 class="text-xs font-black text-amber-950 tracking-wider">家族の思い出ムービー</h3>
+                                <h3 class="text-xs font-black text-amber-950 tracking-wider">中島家ルーツのムービー</h3>
                                 <span class="text-[9px] font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">動画（YouTube）</span>
                             </div>
                         </div>
@@ -551,6 +615,64 @@
     </div>
 
     <script>
+        let currentHeroIndex = 0;
+        let heroSlideInterval = null;
+
+        function showHeroSlide(index) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const dots = document.querySelectorAll('.hero-dot');
+            if (!slides.length) return;
+
+            currentHeroIndex = (index + slides.length) % slides.length;
+
+            slides.forEach((slide, i) => {
+                if (i === currentHeroIndex) {
+                    slide.classList.remove('opacity-0', 'pointer-events-none');
+                    slide.classList.add('opacity-100');
+                } else {
+                    slide.classList.remove('opacity-100');
+                    slide.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            dots.forEach((dot, i) => {
+                if (i === currentHeroIndex) {
+                    dot.classList.remove('bg-white/50', 'w-2.5');
+                    dot.classList.add('bg-white', 'w-6');
+                } else {
+                    dot.classList.remove('bg-white', 'w-6');
+                    dot.classList.add('bg-white/50', 'w-2.5');
+                }
+            });
+        }
+
+        function nextHeroSlide() {
+            showHeroSlide(currentHeroIndex + 1);
+            resetHeroTimer();
+        }
+
+        function prevHeroSlide() {
+            showHeroSlide(currentHeroIndex - 1);
+            resetHeroTimer();
+        }
+
+        function goToHeroSlide(index) {
+            showHeroSlide(index);
+            resetHeroTimer();
+        }
+
+        function resetHeroTimer() {
+            if (heroSlideInterval) clearInterval(heroSlideInterval);
+            heroSlideInterval = setInterval(() => {
+                showHeroSlide(currentHeroIndex + 1);
+            }, 4500);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showHeroSlide(0);
+            resetHeroTimer();
+        });
+
         let currentEpisodeInterval = null;
 
         function clearActiveStates() {
@@ -603,7 +725,7 @@
             audioContainer.classList.remove('hidden');
 
             document.getElementById('media-cat-icon').innerHTML = `<svg class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-2v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12 0c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-2"></path></svg>`;
-            document.getElementById('media-cat-name').textContent = '家族の思い出音楽館';
+            document.getElementById('media-cat-name').textContent = '中島家ルーツの音楽館';
             document.getElementById('media-type-badge').textContent = 'オーディオ曲';
             document.getElementById('media-title').textContent = title;
 
