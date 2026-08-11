@@ -119,9 +119,9 @@
         <!-- 一コマアルバム（アスペクト比 4:3 / 中島家思い出写アルバム 23枚 gazo1〜gazo23） -->
         <div class="mb-8 fade-in" style="animation-delay: 0.08s;">
             
-            <!-- BGM 再生ボタン (写真枠外・右上) -->
-            <div class="flex justify-end mb-2.5">
-                <button id="bgm-toggle-btn" onclick="toggleAlbumBGM()" class="inline-flex items-center space-x-1.5 bg-amber-900 hover:bg-amber-950 text-amber-100 px-4 py-2 rounded-full text-xs font-bold border border-amber-300/80 shadow-sm transition-all active:scale-95">
+            <!-- 写真枠外 ヘッダー（上部中央：BGM再生ボタン） -->
+            <div class="flex items-center justify-center mb-3">
+                <button id="bgm-toggle-btn" onclick="toggleAlbumBGM()" class="inline-flex items-center space-x-1.5 bg-amber-900 hover:bg-amber-950 text-amber-100 px-4 py-2 rounded-full text-xs font-bold border border-amber-300/80 shadow-sm transition-all active:scale-95 shrink-0">
                     <span id="bgm-icon">🎵</span>
                     <span id="bgm-btn-text">BGM再生：父と母の生きた道</span>
                 </button>
@@ -141,10 +141,16 @@
                 <button onclick="nextHeroSlide()" aria-label="次の写真" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 group-hover:opacity-100 z-10">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
                 </button>
+            </div>
 
-                <!-- カウンター表示 -->
-                <div class="absolute bottom-3 right-4 z-10 bg-black/60 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/20 text-white text-xs font-bold tracking-wider shadow-md">
-                    📸 <span id="hero-slide-counter">1 / 23</span>
+            <!-- 写真枠外 フッター（アルバムタイトル＆カウンター） -->
+            <div class="flex items-center justify-center mt-3">
+                <div class="inline-flex items-center space-x-2 bg-amber-900/90 text-amber-100 px-4 py-2 rounded-full text-xs font-bold border border-amber-300/80 shadow-sm">
+                    <span>📷</span>
+                    <span>中島家思い出写アルバム</span>
+                    <span class="bg-amber-950/80 text-amber-200 px-2.5 py-0.5 rounded-full text-[11px] font-mono border border-amber-400/30 ml-1">
+                        <span id="hero-slide-counter">1 / 23</span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -607,11 +613,6 @@
                          onerror="this.onerror=null; this.src='https://placehold.co/800x600/8a5a36/ffffff?text=${encodeURIComponent('中島家思い出写アルバム ' + (index + 1))}';" 
                          alt="${photo.alt}" 
                          class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-4 md:p-6">
-                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
-                            📷 中島家思い出写アルバム (${index + 1} / ${albumPhotos.length})
-                        </span>
-                    </div>
                 </div>
             `).join('');
 
