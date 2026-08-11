@@ -34,13 +34,13 @@
         .title-serif {
             font-family: 'Noto Serif JP', serif;
             letter-spacing: -0.01em;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
         .glass-card {
-            background: rgba(255, 255, 255, 0.93);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.85);
             box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
         }
 
@@ -51,8 +51,8 @@
         }
 
         .category-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 14px 28px -6px rgba(217, 119, 6, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px -6px rgba(217, 119, 6, 0.15);
         }
 
         .category-card:hover .cat-icon {
@@ -73,7 +73,7 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -97,7 +97,7 @@
 
         <!-- ヘッダー -->
         <header class="text-center mb-8 fade-in" style="animation-delay: 0.05s;">
-            <div class="inline-flex items-center space-x-2 bg-amber-50 px-4 py-1.5 rounded-full mb-5 border border-amber-200/60 shadow-sm">
+            <div class="inline-flex items-center space-x-2 bg-amber-50 px-4 py-1.5 rounded-full mb-4 border border-amber-200/60 shadow-sm">
                 <span class="relative flex h-2.5 w-2.5">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
@@ -105,80 +105,59 @@
                 <span class="text-[11px] font-black text-amber-800 tracking-[0.18em] uppercase">Nakajima Family Memorial Archive</span>
             </div>
             
-            <div class="space-y-3">
+            <div class="space-y-2.5">
                 <h1 class="text-3xl md:text-5xl text-gray-900 title-serif font-black tracking-tight drop-shadow-sm">
                     中島家メモリアルサイト
                 </h1>
-                <p class="text-sm md:text-base text-amber-900 font-bold tracking-wider pt-1">
+                <p class="text-sm md:text-base text-amber-900 font-bold tracking-wider pt-0.5">
                     〜 絆をつなぐ 音楽と動画の広場 〜
                 </p>
                 <p class="text-xs md:text-sm text-gray-500 font-medium">家族・親族の思い出をいつでも一緒に楽しめるデジタルアーカイブ</p>
             </div>
         </header>
 
-        <!-- トップ画像スライドショー（3案入れ替え） -->
+        <!-- 一コマアルバム（アスペクト比 4:3 / 中島家思い出写アルバム 22枚） -->
         <div class="mb-8 fade-in" style="animation-delay: 0.08s;">
-            <div class="relative rounded-3xl overflow-hidden glass-card shadow-lg border border-amber-200/60 group">
-                <!-- スライド表示領域 -->
-                <div id="hero-slider" class="relative w-full aspect-[16/9] md:aspect-[21/9] bg-amber-950/20 overflow-hidden">
+            <div class="glass-card rounded-3xl p-3 border border-amber-200/70 shadow-lg">
+                
+                <!-- アルバム上部バー（タイトル＆BGMプレイヤーボタン） -->
+                <div class="flex items-center justify-between mb-2.5 px-2">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-base">📸</span>
+                        <h2 class="text-xs md:text-sm font-black text-amber-950 tracking-wider title-serif">中島家思い出写アルバム</h2>
+                    </div>
                     
-                    <!-- スライド 1: 古い家の写真 1 -->
-                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-100 ease-in-out">
-                        <img src="./gazo_hurui_ie1.png" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/8a5a36/ffffff?text=%E5%8F%A4%E3%81%84%E3%81%A1%E3%81%AE%E5%86%99%E7%9C%91+1';" 
-                             alt="古い家の写真 1" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
-                                🏠 古い家の写真 1
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- スライド 2: 古い家の写真 2 -->
-                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 ease-in-out pointer-events-none">
-                        <img src="./gazo_hurui_ie2.png" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/7c4a27/ffffff?text=%E5%8F%A4%E3%81%84%E3%81%A1%E3%81%AE%E5%86%99%E7%9C%91+2';" 
-                             alt="古い家の写真 2" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
-                                🏠 古い家の写真 2
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- スライド 3: 新しい家の写真 -->
-                    <div class="hero-slide absolute inset-0 transition-opacity duration-1000 opacity-0 ease-in-out pointer-events-none">
-                        <img src="./gazo_atarashi_ie.png" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/800x450/3b6b58/ffffff?text=%E6%96%B0%E3%81%97%E3%81%84%E5%AE%B6%E3%81%AE%E5%86%99%E7%9C%91';" 
-                             alt="新しい家の写真" 
-                             class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex items-end p-4 md:p-6">
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
-                                🏡 新しい家の写真
-                            </span>
-                        </div>
-                    </div>
-
+                    <!-- BGM 再生/停止 ボタン -->
+                    <button id="bgm-toggle-btn" onclick="toggleAlbumBgm()" class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-amber-100 hover:bg-amber-200 text-amber-900 border border-amber-300 text-[11px] font-bold shadow-sm transition-all active:scale-95">
+                        <span id="bgm-icon">🎵</span>
+                        <span id="bgm-text">BGM再生：父と母の生きた道</span>
+                    </button>
                 </div>
 
-                <!-- ナビゲーションボタン（左右矢印） -->
-                <button onclick="prevHeroSlide()" aria-label="前の写真" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 group-hover:opacity-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <button onclick="nextHeroSlide()" aria-label="次の写真" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-sm transition-all opacity-80 group-hover:opacity-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-                </button>
+                <!-- スライド表示領域（4:3 アスペクト比） -->
+                <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-amber-950/20 group shadow-inner">
+                    <div id="hero-slider" class="relative w-full h-full">
+                        <!-- JavaScriptで動的生成 -->
+                    </div>
 
-                <!-- スライド表示インジケーター（ドット） -->
-                <div class="absolute bottom-3 right-4 flex space-x-2 z-10">
-                    <button onclick="goToHeroSlide(0)" class="hero-dot h-2.5 rounded-full bg-white transition-all duration-300 shadow-md w-6" aria-label="スライド1"></button>
-                    <button onclick="goToHeroSlide(1)" class="hero-dot h-2.5 rounded-full bg-white/50 transition-all duration-300 shadow-md w-2.5" aria-label="スライド2"></button>
-                    <button onclick="goToHeroSlide(2)" class="hero-dot h-2.5 rounded-full bg-white/50 transition-all duration-300 shadow-md w-2.5" aria-label="スライド3"></button>
+                    <!-- ナビゲーションボタン（左右矢印） -->
+                    <button onclick="prevHeroSlide()" aria-label="前の写真" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 z-10 shadow-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button onclick="nextHeroSlide()" aria-label="次の写真" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center backdrop-blur-md transition-all opacity-80 group-hover:opacity-100 z-10 shadow-md">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+
+                    <!-- カウンター表示 -->
+                    <div class="absolute bottom-3 right-3 z-10 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 text-white text-[11px] font-bold tracking-wider shadow-md">
+                        <span id="hero-slide-counter">1 / 22</span>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- 隠しオーディオ要素（アルバムBGM用） -->
+        <audio id="album-bgm-audio" loop src="./music_chichi_haha.mp3" preload="none"></audio>
 
         <div class="space-y-8 fade-in" style="animation-delay: 0.1s;">
             
@@ -615,12 +594,45 @@
     </div>
 
     <script>
+        // Album Slides Data (22枚 / gazo0_taya_kyoudai.jpg ~ gazo21_taya_kyoudai.jpg)
+        const albumPhotos = Array.from({ length: 22 }, (_, i) => ({
+            src: `./gazo${i}_taya_kyoudai.jpg`,
+            alt: `中島家思い出写アルバム ${i + 1}`
+        }));
+
         let currentHeroIndex = 0;
         let heroSlideInterval = null;
 
+        function initAlbumSlider() {
+            const sliderContainer = document.getElementById('hero-slider');
+            if (!sliderContainer) return;
+
+            sliderContainer.innerHTML = albumPhotos.map((photo, index) => `
+                <div class="hero-slide absolute inset-0 transition-opacity duration-1000 ${index === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'} ease-in-out">
+                    <img src="${photo.src}" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/8a5a36/ffffff?text=${encodeURIComponent('中島家思い出写アルバム ' + (index + 1))}';" 
+                         alt="${photo.alt}" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-4 md:p-5">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-950/80 text-amber-100 backdrop-blur-md border border-amber-400/30 shadow-md">
+                            📷 中島家思い出写アルバム (${index + 1} / ${albumPhotos.length})
+                        </span>
+                    </div>
+                </div>
+            `).join('');
+
+            updateSlideCounter();
+        }
+
+        function updateSlideCounter() {
+            const counterEl = document.getElementById('hero-slide-counter');
+            if (counterEl) {
+                counterEl.textContent = `📸 ${currentHeroIndex + 1} / ${albumPhotos.length}`;
+            }
+        }
+
         function showHeroSlide(index) {
             const slides = document.querySelectorAll('.hero-slide');
-            const dots = document.querySelectorAll('.hero-dot');
             if (!slides.length) return;
 
             currentHeroIndex = (index + slides.length) % slides.length;
@@ -635,15 +647,7 @@
                 }
             });
 
-            dots.forEach((dot, i) => {
-                if (i === currentHeroIndex) {
-                    dot.classList.remove('bg-white/50', 'w-2.5');
-                    dot.classList.add('bg-white', 'w-6');
-                } else {
-                    dot.classList.remove('bg-white', 'w-6');
-                    dot.classList.add('bg-white/50', 'w-2.5');
-                }
-            });
+            updateSlideCounter();
         }
 
         function nextHeroSlide() {
@@ -656,11 +660,6 @@
             resetHeroTimer();
         }
 
-        function goToHeroSlide(index) {
-            showHeroSlide(index);
-            resetHeroTimer();
-        }
-
         function resetHeroTimer() {
             if (heroSlideInterval) clearInterval(heroSlideInterval);
             heroSlideInterval = setInterval(() => {
@@ -668,10 +667,53 @@
             }, 4500);
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            showHeroSlide(0);
-            resetHeroTimer();
-        });
+        // BGM Functions
+        function toggleAlbumBgm() {
+            const bgmAudio = document.getElementById('album-bgm-audio');
+            const mainAudio = document.getElementById('main-audio-player');
+            const btn = document.getElementById('bgm-toggle-btn');
+            const icon = document.getElementById('bgm-icon');
+            const text = document.getElementById('bgm-text');
+
+            // If main audio player is playing, pause it first
+            if (mainAudio && !mainAudio.paused) {
+                mainAudio.pause();
+            }
+
+            if (bgmAudio.paused) {
+                bgmAudio.play().then(() => {
+                    btn.classList.remove('bg-amber-100', 'text-amber-900', 'border-amber-300');
+                    btn.classList.add('bg-amber-600', 'text-white', 'border-amber-500', 'animate-pulse');
+                    icon.textContent = '🔊';
+                    text.textContent = 'BGM再生中（タップで停止）';
+                }).catch(err => {
+                    console.log('BGM Play blocked:', err);
+                });
+            } else {
+                bgmAudio.pause();
+                btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-500', 'animate-pulse');
+                btn.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
+                icon.textContent = '🎵';
+                text.textContent = 'BGM再生：父と母の生きた道';
+            }
+        }
+
+        function stopAlbumBgm() {
+            const bgmAudio = document.getElementById('album-bgm-audio');
+            const btn = document.getElementById('bgm-toggle-btn');
+            const icon = document.getElementById('bgm-icon');
+            const text = document.getElementById('bgm-text');
+
+            if (bgmAudio && !bgmAudio.paused) {
+                bgmAudio.pause();
+                if (btn) {
+                    btn.classList.remove('bg-amber-600', 'text-white', 'border-amber-500', 'animate-pulse');
+                    btn.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
+                    icon.textContent = '🎵';
+                    text.textContent = 'BGM再生：父と母の生きた道';
+                }
+            }
+        }
 
         let currentEpisodeInterval = null;
 
@@ -710,6 +752,8 @@
         }
 
         function playAudio(src, title, episodes, element) {
+            stopAlbumBgm(); // Stop background music if running
+
             clearActiveStates();
             if (element) {
                 element.classList.add('track-active');
@@ -798,6 +842,8 @@
         }
 
         function selectYouTubeItem(youtubeId, title, episodes, element) {
+            stopAlbumBgm(); // Stop background music if running
+
             clearActiveStates();
             if (element) {
                 element.classList.add('track-active');
@@ -837,6 +883,11 @@
 
             mediaPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initAlbumSlider();
+            resetHeroTimer();
+        });
     </script>
 </body>
 </html>
