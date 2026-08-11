@@ -118,15 +118,16 @@
 
         <!-- 一コマアルバム（アスペクト比 4:3 / 中島家思い出写アルバム 23枚 gazo1〜gazo23） -->
         <div class="mb-8 fade-in" style="animation-delay: 0.08s;">
+            
+            <!-- BGM 再生ボタン (写真枠外・右上) -->
+            <div class="flex justify-end mb-2.5">
+                <button id="bgm-toggle-btn" onclick="toggleAlbumBGM()" class="inline-flex items-center space-x-1.5 bg-amber-900 hover:bg-amber-950 text-amber-100 px-4 py-2 rounded-full text-xs font-bold border border-amber-300/80 shadow-sm transition-all active:scale-95">
+                    <span id="bgm-icon">🎵</span>
+                    <span id="bgm-btn-text">BGM再生：父と母の生きた道</span>
+                </button>
+            </div>
+
             <div class="relative rounded-3xl overflow-hidden glass-card shadow-lg border border-amber-200/60 group">
-                
-                <!-- BGM 再生ボタン (アルバム右上) -->
-                <div class="absolute top-3 right-3 z-20">
-                    <button id="bgm-toggle-btn" onclick="toggleAlbumBGM()" class="inline-flex items-center space-x-1.5 bg-amber-950/80 hover:bg-amber-900 text-amber-100 px-3.5 py-1.5 rounded-full text-xs font-bold border border-amber-400/40 backdrop-blur-md shadow-md transition-all active:scale-95">
-                        <span id="bgm-icon">🎵</span>
-                        <span id="bgm-btn-text">BGM再生：父と母の生きた道</span>
-                    </button>
-                </div>
 
                 <!-- スライド表示領域（4:3 アスペクト比） -->
                 <div id="hero-slider" class="relative w-full aspect-[4/3] bg-amber-950/20 overflow-hidden">
